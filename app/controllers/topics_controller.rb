@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.all.order(votes_count: :desc)
+    #@topics = Topic.all.sort{ |a, b| a.votes.count <=> b.votes.count }
   end
 
   # GET /topics/1
